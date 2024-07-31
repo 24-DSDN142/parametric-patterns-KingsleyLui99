@@ -8,47 +8,815 @@ Your final settings.txt will look something like this when you are finished:
 /////////////////////////////////
 
 Wallpaper 1:
-
-//your parameter variables go here!
-let rect_width  = 20;
-let rect_height = 20;
-let paramter1 = 10;
-let paramter2 = true;
-let paramter3 = 50; 
-let paramter4 = 0; 
-let paramter5 = 60;
+let flowerSize;
+let petalColors = [];
+let backgroundColor;
+let lineWeight;
+let spacing;
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(GRID_WALLPAPER);
-  pWallpaper.resolution(NINE_LANDSCAPE);
-  pWallpaper.show_guide(false); //set this to false when you're ready to print
+  pWallpaper.resolution(NINE_PORTRAIT);
+  pWallpaper.show_guide(true); //set this to false when you're ready to print
 
   //Grid settings
-  pWallpaper.grid_settings.cell_width  = 100;
-  pWallpaper.grid_settings.cell_height = 100;
-  pWallpaper.grid_settings.row_offset  = 50;
+  pWallpaper.grid_settings.cell_width  = 200;
+  pWallpaper.grid_settings.cell_height = 200;
+  pWallpaper.grid_settings.row_offset  = 100;
+  
 }
 
-/////////////////////////////////
+function wallpaper_background() {
+  background(240, 255, 240); //light honeydew green colour
+}
+
+function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
+
+  flowerSize = 100; // Size of the flower
+  petalColors = [
+    color('#c848b9'), // Dark pink
+    color('#f962a7'), // Light pink
+    color('#fd836e'), // Coral
+    color('#eda7a7'), // Soft peach
+    color('#ffb3d9'), // Lighter pink
+    color('#d68a9b'), // Darker pink
+  ];
+  backgroundColor = color('#ffe6e6'); // Light background color
+  lineWeight = 2; // Line weight for petals
+  spacing = 200; //
+  drawBackgroundPattern();
+  
+  // // Draw flowers
+  // for (let x = spacing; x < width; x += spacing) {
+  //   for (let y = spacing; y < height; y += spacing) {
+  //     drawFlower(x, y); // Draw flower at each position
+  //   }
+  // }
+  drawFlower(100,100); // Draw flower at each position
+  noLoop(); // Stop draw loop after one iteration
+}
+function drawBackgroundPattern() {
+  // Draw diagonal lines for a subtle texture
+  stroke(255, 240); // Light color for lines with transparency
+  strokeWeight(1); // Increased line weight for thicker lines
+  
+  for (let i = 0; i < width; i += 50) {
+    line(i, 0, i + 50, height); // Diagonal lines from left to right
+  }
+  
+  for (let j = 0; j < height; j += 50) {
+    line(0, j, width, j + 50); // Diagonal lines from top to bottom
+  }
+  
+  // Draw circles for added texture
+  fill(255, 220, 200, 50); // Light color with transparency
+  noStroke();
+  
+  for (let i = 0; i < width; i += 100) {
+    for (let j = 0; j < height; j += 100) {
+      ellipse(i + 50, j + 50, 30, 30); // Subtle circles in the background
+    }
+  }
+}
+
+function drawFlower(x, y) {
+  push();
+  translate(x, y);
+  
+  strokeWeight(lineWeight);
+  
+  // Draw petals with varying colors
+  for (let i = 0; i < 6; i++) {
+    rotate(60);
+    fill(petalColors[i % petalColors.length]); // Cycle through the petal colors
+    ellipse(0, -flowerSize / 2, flowerSize / 3, flowerSize);
+  }
+  
+  // Draw center of the flower
+  fill(255, 220, 0); // Center color
+  ellipse(0, 0, flowerSize / 3);
+  
+  pop();
+}
+
 
 Wallpaper 2:
-
-//your parameter variables go here!
-let rect_width  = 10;
-let rect_height = 10;
-let paramter1 = 20;
-let paramter2 = false;
-let paramter3 = 50; 
-let paramter4 = 80; 
-let paramter5 = 30;
+let flowerSize;
+let petalColors = [];
+let backgroundColor;
+let lineWeight;
+let spacing;
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(GRID_WALLPAPER);
-  pWallpaper.resolution(NINE_LANDSCAPE);
-  pWallpaper.show_guide(false); //set this to false when you're ready to print
+  pWallpaper.resolution(NINE_PORTRAIT);
+  pWallpaper.show_guide(true); //set this to false when you're ready to print
 
   //Grid settings
-  pWallpaper.grid_settings.cell_width  = 100;
-  pWallpaper.grid_settings.cell_height = 100;
-  pWallpaper.grid_settings.row_offset  = 0;
+  pWallpaper.grid_settings.cell_width  = 200;
+  pWallpaper.grid_settings.cell_height = 200;
+  pWallpaper.grid_settings.row_offset  = 100;
+  
+}
+
+function wallpaper_background() {
+  background(240, 255, 240); //light honeydew green colour
+}
+
+function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
+
+  flowerSize = 200; // Size of the flower
+  petalColors = [
+    color('#c848b9'), // colour
+    color('#f962a7'), // colour
+    color('#fd836e'), // colour
+    color('#eda7a7'), // colour
+    color('#ffb3d9'), // colour
+    color('#d68a9b'), // colour
+  ];
+  backgroundColor = color('#ffe6e6'); // Light background color
+  lineWeight = 2; // Line weight for petals
+  spacing = 200; //
+  drawBackgroundPattern();
+  
+  // // Draw flowers
+  // for (let x = spacing; x < width; x += spacing) {
+  //   for (let y = spacing; y < height; y += spacing) {
+  //     drawFlower(x, y); // Draw flower at each position
+  //   }
+  // }
+  drawFlower(100,100); // Draw flower at each position
+  noLoop(); // Stop draw loop after one iteration
+}
+function drawBackgroundPattern() {
+  // Draw diagonal lines for a subtle texture
+  stroke(255, 240); // Light color for lines with transparency
+  strokeWeight(1); // Increased line weight for thicker lines
+  
+  for (let i = 0; i < width; i += 50) {
+    line(i, 0, i + 50, height); // Diagonal lines from left to right
+  }
+  
+  for (let j = 0; j < height; j += 50) {
+    line(0, j, width, j + 50); // Diagonal lines from top to bottom
+  }
+  
+  // Draw circles for added texture
+  fill(255, 220, 200, 50); // Light color with transparency
+  noStroke();
+  
+  for (let i = 0; i < width; i += 100) {
+    for (let j = 0; j < height; j += 100) {
+      ellipse(i + 50, j + 50, 30, 30); // Subtle circles in the background
+    }
+  }
+}
+
+function drawFlower(x, y) {
+  push();
+  translate(x, y);
+  
+  strokeWeight(lineWeight);
+  
+  // Draw petals with varying colors
+  for (let i = 0; i < 6; i++) {
+    rotate(60);
+    fill(petalColors[i % petalColors.length]); // Cycle through the petal colors
+    ellipse(0, -flowerSize / 2, flowerSize / 3, flowerSize);
+  }
+  
+  // Draw center of the flower
+  fill(255, 220, 0); // Center color
+  ellipse(0, 0, flowerSize / 3);
+  
+  pop();
+}
+
+
+Wallpaper 3:
+let flowerSize;
+let petalColors = [];
+let backgroundColor;
+let lineWeight;
+let spacing;
+
+function setup_wallpaper(pWallpaper) {
+  pWallpaper.output_mode(GRID_WALLPAPER);
+  pWallpaper.resolution(NINE_PORTRAIT);
+  pWallpaper.show_guide(true); //set this to false when you're ready to print
+
+  //Grid settings
+  pWallpaper.grid_settings.cell_width  = 200;
+  pWallpaper.grid_settings.cell_height = 200;
+  pWallpaper.grid_settings.row_offset  = 100;
+  
+}
+
+function wallpaper_background() {
+  background(240, 255, 240); //light honeydew green colour
+}
+function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
+
+  flowerSize = 100; // Size of the flower
+  petalColors = [
+    color('#f7df02'), // colour
+    color('#f77902'), // colour
+    color('#f71f02'), // colour
+    color('#f3f702'), // colour
+    color('#f7a202'), // colour
+    color('#f70271'), // colour
+  ];
+  backgroundColor = color('#ffe6e6'); // Light background color
+  lineWeight = 10; // Line weight for petals
+  spacing = 200; //
+  drawBackgroundPattern();
+  
+  // // Draw flowers
+  // for (let x = spacing; x < width; x += spacing) {
+  //   for (let y = spacing; y < height; y += spacing) {
+  //     drawFlower(x, y); // Draw flower at each position
+  //   }
+  // }
+  drawFlower(100,100); // Draw flower at each position
+  noLoop(); // Stop draw loop after one iteration
+}
+function drawBackgroundPattern() {
+  // Draw diagonal lines for a subtle texture
+  stroke(255, 240); // Light color for lines with transparency
+  strokeWeight(0); // Increased line weight for thicker lines
+  
+  for (let i = 0; i < width; i += 50) {
+    line(i, 0, i + 50, height); // Diagonal lines from left to right
+  }
+  
+  for (let j = 0; j < height; j += 50) {
+    line(0, j, width, j + 50); // Diagonal lines from top to bottom
+  }
+  
+  // Draw circles for added texture
+  fill(255, 220, 200, 50); // Light color with transparency
+  noStroke();
+  
+  for (let i = 0; i < width; i += 100) {
+    for (let j = 0; j < height; j += 100) {
+      ellipse(i + 50, j + 50, 30, 30); // Subtle circles in the background
+    }
+  }
+}
+
+function drawFlower(x, y) {
+  push();
+  translate(x, y);
+  
+  strokeWeight(lineWeight);
+  
+  // Draw petals with varying colors
+  for (let i = 0; i < 6; i++) {
+    rotate(60);
+    fill(petalColors[i % petalColors.length]); // Cycle through the petal colors
+    ellipse(0, -flowerSize / 2, flowerSize / 3, flowerSize);
+  }
+  
+  // Draw center of the flower
+  fill(255, 220, 0); // Center color
+  ellipse(0, 0, flowerSize / 3);
+  
+  pop();
+}
+
+
+Wallpaper 4:
+let flowerSize;
+let petalColors = [];
+let backgroundColor;
+let lineWeight;
+let spacing;
+
+function setup_wallpaper(pWallpaper) {
+  pWallpaper.output_mode(GRID_WALLPAPER);
+  pWallpaper.resolution(NINE_PORTRAIT);
+  pWallpaper.show_guide(true); //set this to false when you're ready to print
+
+  //Grid settings
+  pWallpaper.grid_settings.cell_width  = 200;
+  pWallpaper.grid_settings.cell_height = 200;
+  pWallpaper.grid_settings.row_offset  = 100;
+  
+}
+
+function wallpaper_background() {
+  background(240, 255, 240); //light honeydew green colour
+}
+
+function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
+
+  flowerSize = 100; // Size of the flower
+  petalColors = [
+    color('#ffdd00'), // colour
+    color('#ff1500'), // colour
+  
+    
+  ];
+  backgroundColor = color('#ffe6e6'); // Light background color
+  lineWeight = 10; // Line weight for petals
+  spacing = 200; //
+  drawBackgroundPattern();
+  
+  // // Draw flowers
+  // for (let x = spacing; x < width; x += spacing) {
+  //   for (let y = spacing; y < height; y += spacing) {
+  //     drawFlower(x, y); // Draw flower at each position
+  //   }
+  // }
+  drawFlower(100,100); // Draw flower at each position
+  noLoop(); // Stop draw loop after one iteration
+}
+function drawBackgroundPattern() {
+  // Draw diagonal lines for a subtle texture
+  stroke(255, 240); // Light color for lines with transparency
+  strokeWeight(0); // Increased line weight for thicker lines
+  
+  for (let i = 0; i < width; i += 50) {
+    line(i, 0, i + 50, height); // Diagonal lines from left to right
+  }
+  
+  for (let j = 0; j < height; j += 50) {
+    line(0, j, width, j + 50); // Diagonal lines from top to bottom
+  }
+  
+  // Draw circles for added texture
+  fill(255, 220, 200, 50); // Light color with transparency
+  noStroke();
+  
+  for (let i = 0; i < width; i += 100) {
+    for (let j = 0; j < height; j += 100) {
+      ellipse(i + 50, j + 50, 30, 30); // Subtle circles in the background
+    }
+  }
+}
+
+function drawFlower(x, y) {
+  push();
+  translate(x, y);
+  
+  strokeWeight(lineWeight);
+  
+  // Draw petals with varying colors
+  for (let i = 0; i < 6; i++) {
+    rotate(60);
+    fill(petalColors[i % petalColors.length]); // Cycle through the petal colors
+    ellipse(0, -flowerSize / 2, flowerSize / 3, flowerSize);
+  }
+  
+  // Draw center of the flower
+  fill(255, 220, 0); // Center color
+  ellipse(0, 0, flowerSize / 3);
+  
+  pop();
+}
+
+
+Wallpaper 5:
+let flowerSize;
+let petalColors = [];
+let backgroundColor;
+let lineWeight;
+let spacing;
+
+function setup_wallpaper(pWallpaper) {
+  pWallpaper.output_mode(GRID_WALLPAPER);
+  pWallpaper.resolution(NINE_PORTRAIT);
+  pWallpaper.show_guide(true); //set this to false when you're ready to print
+
+  //Grid settings
+  pWallpaper.grid_settings.cell_width  = 200;
+  pWallpaper.grid_settings.cell_height = 200;
+  pWallpaper.grid_settings.row_offset  = 100;
+  
+}
+
+function wallpaper_background() {
+  background(240, 255, 240); //light honeydew green colour
+}
+
+function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
+
+  flowerSize = 100; // Size of the flower
+  petalColors = [
+    color('#ff00f7'), // colour
+    color('#a200ff'), // colour
+    
+    
+  ];
+  backgroundColor = color('#ffe6e6'); // Light background color
+  lineWeight = 10; // Line weight for petals
+  spacing = 200; //
+  drawBackgroundPattern();
+  
+  // // Draw flowers
+  // for (let x = spacing; x < width; x += spacing) {
+  //   for (let y = spacing; y < height; y += spacing) {
+  //     drawFlower(x, y); // Draw flower at each position
+  //   }
+  // }
+  drawFlower(100,100); // Draw flower at each position
+  noLoop(); // Stop draw loop after one iteration
+}
+function drawBackgroundPattern() {
+  // Draw diagonal lines for a subtle texture
+  stroke(255, 240); // Light color for lines with transparency
+  strokeWeight(1); // Increased line weight for thicker lines
+  
+  for (let i = 0; i < width; i += 50) {
+    line(i, 0, i + 50, height); // Diagonal lines from left to right
+  }
+  
+  for (let j = 0; j < height; j += 50) {
+    line(0, j, width, j + 50); // Diagonal lines from top to bottom
+  }
+  
+  // Draw circles for added texture
+  fill(255, 220, 200, 50); // Light color with transparency
+  noStroke();
+  
+  for (let i = 0; i < width; i += 100) {
+    for (let j = 0; j < height; j += 100) {
+      ellipse(i + 50, j + 50, 30, 30); // Subtle circles in the background
+    }
+  }
+}
+
+function drawFlower(x, y) {
+  push();
+  translate(x, y);
+  
+  strokeWeight(lineWeight);
+  
+  // Draw petals with varying colors
+  for (let i = 0; i < 6; i++) {
+    rotate(60);
+    fill(petalColors[i % petalColors.length]); // Cycle through the petal colors
+    ellipse(0, -flowerSize / 2, flowerSize / 3, flowerSize);
+  }
+  
+  // Draw center of the flower
+  fill(255, 220, 0); // Center color
+  ellipse(0, 0, flowerSize / 3);
+  
+  pop();
+}
+
+Wallpaper 6:
+let flowerSize;
+let petalColors = [];
+let backgroundColor;
+let lineWeight;
+let spacing;
+
+function setup_wallpaper(pWallpaper) {
+  pWallpaper.output_mode(GRID_WALLPAPER);
+  pWallpaper.resolution(NINE_PORTRAIT);
+  pWallpaper.show_guide(true); //set this to false when you're ready to print
+
+  //Grid settings
+  pWallpaper.grid_settings.cell_width  = 200;
+  pWallpaper.grid_settings.cell_height = 200;
+  pWallpaper.grid_settings.row_offset  = 100;
+  
+}
+
+function wallpaper_background() {
+  background(240, 255, 240); //light honeydew green colour
+}
+
+function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
+
+  flowerSize = 150; // Size of the flower
+  petalColors = [
+    color('#ff00f7'), // colour
+    color('#a200ff'), // colour
+  ];
+  backgroundColor = color('#a200ff'); // Light background color
+  lineWeight = 10; // Line weight for petals
+  spacing = 50; //
+  drawBackgroundPattern();
+  
+  // // Draw flowers
+  // for (let x = spacing; x < width; x += spacing) {
+  //   for (let y = spacing; y < height; y += spacing) {
+  //     drawFlower(x, y); // Draw flower at each position
+  //   }
+  // }
+  drawFlower(100,100); // Draw flower at each position
+  noLoop(); // Stop draw loop after one iteration
+}
+function drawBackgroundPattern() {
+  // Draw diagonal lines for a subtle texture
+  stroke(255, 240); // Light color for lines with transparency
+  strokeWeight(0); // Increased line weight for thicker lines
+  
+  for (let i = 0; i < width; i += 50) {
+    line(i, 0, i + 50, height); // Diagonal lines from left to right
+  }
+  
+  for (let j = 0; j < height; j += 50) {
+    line(0, j, width, j + 50); // Diagonal lines from top to bottom
+  }
+  
+  // Draw circles for added texture
+  fill(255, 220, 200, 50); // Light color with transparency
+  noStroke();
+  
+  for (let i = 0; i < width; i += 100) {
+    for (let j = 0; j < height; j += 100) {
+      ellipse(i + 50, j + 50, 30, 30); // Subtle circles in the background
+    }
+  }
+}
+
+function drawFlower(x, y) {
+  push();
+  translate(x, y);
+  
+  strokeWeight(lineWeight);
+  
+  // Draw petals with varying colors
+  for (let i = 0; i < 6; i++) {
+    rotate(60);
+    fill(petalColors[i % petalColors.length]); // Cycle through the petal colors
+    ellipse(0, -flowerSize / 2, flowerSize / 3, flowerSize);
+  }
+  
+  // Draw center of the flower
+  fill(255, 220, 0); // Center color
+  ellipse(0, 0, flowerSize / 3);
+  
+  pop();
+}
+
+
+Wallpaper 7:
+let flowerSize;
+let petalColors = [];
+let backgroundColor;
+let lineWeight;
+let spacing;
+
+function setup_wallpaper(pWallpaper) {
+  pWallpaper.output_mode(GRID_WALLPAPER);
+  pWallpaper.resolution(NINE_PORTRAIT);
+  pWallpaper.show_guide(true); //set this to false when you're ready to print
+
+  //Grid settings
+  pWallpaper.grid_settings.cell_width  = 200;
+  pWallpaper.grid_settings.cell_height = 200;
+  pWallpaper.grid_settings.row_offset  = 100;
+  
+}
+
+function wallpaper_background() {
+  background(240, 255, 240); //light honeydew green colour
+}
+
+function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
+
+  flowerSize = 150; // Size of the flower
+  petalColors = [
+    color('#00d9ff'), // colour
+    color('#a200ff'), // colour
+  ];
+  backgroundColor = color('#a200ff'); // Light background color
+  lineWeight = 10; // Line weight for petals
+  spacing = 50; //
+  drawBackgroundPattern();
+  
+  // // Draw flowers
+  // for (let x = spacing; x < width; x += spacing) {
+  //   for (let y = spacing; y < height; y += spacing) {
+  //     drawFlower(x, y); // Draw flower at each position
+  //   }
+  // }
+  drawFlower(100,100); // Draw flower at each position
+  noLoop(); // Stop draw loop after one iteration
+}
+function drawBackgroundPattern() {
+  // Draw diagonal lines for a subtle texture
+  stroke(255, 240); // Light color for lines with transparency
+  strokeWeight(0); // Increased line weight for thicker lines
+  
+  for (let i = 0; i < width; i += 50) {
+    line(i, 0, i + 50, height); // Diagonal lines from left to right
+  }
+  
+  for (let j = 0; j < height; j += 50) {
+    line(0, j, width, j + 50); // Diagonal lines from top to bottom
+  }
+  
+  // Draw circles for added texture
+  fill(255, 220, 200, 50); // Light color with transparency
+  noStroke();
+  
+  for (let i = 0; i < width; i += 100) {
+    for (let j = 0; j < height; j += 100) {
+      ellipse(i + 50, j + 50, 30, 30); // Subtle circles in the background
+    }
+  }
+}
+
+function drawFlower(x, y) {
+  push();
+  translate(x, y);
+  
+  strokeWeight(lineWeight);
+  
+  // Draw petals with varying colors
+  for (let i = 0; i < 6; i++) {
+    rotate(60);
+    fill(petalColors[i % petalColors.length]); // Cycle through the petal colors
+    ellipse(0, -flowerSize / 2, flowerSize / 3, flowerSize);
+  }
+  
+  // Draw center of the flower
+  fill(255, 220, 0); // Center color
+  ellipse(0, 0, flowerSize / 3);
+  
+  pop();
+}
+
+
+Wallpaper 8:
+let flowerSize;
+let petalColors = [];
+let backgroundColor;
+let lineWeight;
+let spacing;
+
+function setup_wallpaper(pWallpaper) {
+  pWallpaper.output_mode(GRID_WALLPAPER);
+  pWallpaper.resolution(NINE_PORTRAIT);
+  pWallpaper.show_guide(true); //set this to false when you're ready to print
+
+  //Grid settings
+  pWallpaper.grid_settings.cell_width  = 200;
+  pWallpaper.grid_settings.cell_height = 200;
+  pWallpaper.grid_settings.row_offset  = 100;
+  
+}
+
+function wallpaper_background() {
+  background(240, 255, 240); //light honeydew green colour
+}
+
+function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
+
+  flowerSize = 110; // Size of the flower
+  petalColors = [
+    color('#00d9ff'), // colour
+    color('#a200ff'), // colour
+  ];
+  backgroundColor = color('#a200ff'); // Light background color
+  lineWeight = 10; // Line weight for petals
+  spacing = 50; //
+  drawBackgroundPattern();
+  
+  // // Draw flowers
+  // for (let x = spacing; x < width; x += spacing) {
+  //   for (let y = spacing; y < height; y += spacing) {
+  //     drawFlower(x, y); // Draw flower at each position
+  //   }
+  // }
+  drawFlower(100,100); // Draw flower at each position
+  noLoop(); // Stop draw loop after one iteration
+}
+function drawBackgroundPattern() {
+  // Draw diagonal lines for a subtle texture
+  stroke(255, 240); // Light color for lines with transparency
+  strokeWeight(4); // Increased line weight for thicker lines
+  
+  for (let i = 0; i < width; i += 50) {
+    line(i, 0, i + 50, height); // Diagonal lines from left to right
+  }
+  
+  for (let j = 0; j < height; j += 50) {
+    line(0, j, width, j + 50); // Diagonal lines from top to bottom
+  }
+  
+  // Draw circles for added texture
+  fill(255, 220, 200, 50); // Light color with transparency
+  noStroke();
+  
+  for (let i = 0; i < width; i += 100) {
+    for (let j = 0; j < height; j += 100) {
+      ellipse(i + 50, j + 50, 30, 30); // Subtle circles in the background
+    }
+  }
+}
+
+function drawFlower(x, y) {
+  push();
+  translate(x, y);
+  
+  strokeWeight(lineWeight);
+  
+  // Draw petals with varying colors
+  for (let i = 0; i < 6; i++) {
+    rotate(60);
+    fill(petalColors[i % petalColors.length]); // Cycle through the petal colors
+    ellipse(0, -flowerSize / 2, flowerSize / 3, flowerSize);
+  }
+  
+  // Draw center of the flower
+  fill(255, 220, 0); // Center color
+  ellipse(0, 0, flowerSize / 3);
+  
+  pop();
+}
+
+
+Wallpaper 9 final wallpaper design:
+let flowerSize;
+let petalColors = [];
+let backgroundColor;
+let lineWeight;
+let spacing;
+
+function setup_wallpaper(pWallpaper) {
+  pWallpaper.output_mode(GRID_WALLPAPER);
+  pWallpaper.resolution(A3);
+  pWallpaper.show_guide(true); //set this to false when you're ready to print
+
+  //Grid settings
+  pWallpaper.grid_settings.cell_width  = 200;
+  pWallpaper.grid_settings.cell_height = 200;
+  pWallpaper.grid_settings.row_offset  = 100;
+  
+}
+
+function wallpaper_background() {
+  background(240, 255, 240); //light honeydew green colour
+}
+
+function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
+
+  flowerSize = 85; // Size of the flower
+  petalColors = [
+    color('#88dbf2'), // Light blue
+    color('#9d88f2'), // Light purple
+  ];
+  backgroundColor = color('#a200ff'); // Light background color
+  lineWeight = 10; // Line weight for petals
+  spacing = 50; //
+  drawBackgroundPattern();
+  
+  // // Draw flowers
+  // for (let x = spacing; x < width; x += spacing) {
+  //   for (let y = spacing; y < height; y += spacing) {
+  //     drawFlower(x, y); // Draw flower at each position
+  //   }
+  // }
+  drawFlower(100,100); // Draw flower at each position
+  noLoop(); // Stop draw loop after one iteration
+}
+function drawBackgroundPattern() {
+  // Draw diagonal lines for a subtle texture
+  stroke(255, 240); // Light color for lines with transparency
+  strokeWeight(0); // Increased line weight for thicker lines
+  
+  for (let i = 0; i < width; i += 50) {
+    line(i, 0, i + 50, height); // Diagonal lines from left to right
+  }
+  
+  for (let j = 0; j < height; j += 50) {
+    line(0, j, width, j + 50); // Diagonal lines from top to bottom
+  }
+  
+  // Draw circles for added texture
+  fill(255, 220, 200, 50); // Light color with transparency
+  noStroke();
+  
+  for (let i = 0; i < width; i += 100) {
+    for (let j = 0; j < height; j += 100) {
+      ellipse(i + 50, j + 50, 30, 30); // Subtle circles in the background
+    }
+  }
+}
+
+function drawFlower(x, y) {
+  push();
+  translate(x, y);
+  
+  strokeWeight(lineWeight);
+  
+  // Draw petals with varying colors
+  for (let i = 0; i < 6; i++) {
+    rotate(60);
+    fill(petalColors[i % petalColors.length]); // Cycle through the petal colors
+    ellipse(0, -flowerSize / 2, flowerSize / 3, flowerSize);
+  }
+  
+  // Draw center of the flower
+  fill(255, 220, 0); // Center color
+  ellipse(0, 0, flowerSize / 3);
+  
+  pop();
 }
